@@ -1,0 +1,36 @@
+# --- Terraform ---
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Exclude all .tfvars files (since they likely contain your Proxmox credentials/IPs)
+*.tfvars
+*.tfvars.json
+
+# Ignore override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# --- Talos & Kubernetes Secrets ---
+# The files you are generating via local_file
+kubeconfig
+talosconfig
+
+# Any backup or temporary configs
+*.bak
+.envrc
+
+# --- Provider / OS Specific ---
+.terraform.lock.hcl
+.DS_Store
+
+talos_configs/
