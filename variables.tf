@@ -62,3 +62,15 @@ variable "cluster_endpoint" {
 variable "talos_install_image_custom" {
   type = string
 }
+
+variable "github_user" {
+  type = string
+}
+
+variable "github_token" {
+  type = string
+}
+
+variable "repository_name" {
+  type = string
+}

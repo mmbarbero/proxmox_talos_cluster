@@ -25,7 +25,6 @@ resource "proxmox_virtual_environment_vm" "talos-controllers" {
   }
 
   cdrom {
-    enabled   = true
     file_id   = var.talos_image_location
   }
   network_device {
@@ -74,7 +73,6 @@ resource "proxmox_virtual_environment_vm" "talos-workers"{
   }
 
   cdrom {
-    enabled   = true
     file_id   = var.talos_image_location 
   }
   network_device {
