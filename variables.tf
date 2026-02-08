@@ -74,3 +74,12 @@ variable "github_token" {
 variable "repository_name" {
   type = string
 }
+
+variable "create_gitops_repo" {
+  type = bool
+  default = false
+}
+
+variable "github_username" {
+  type = string
+}
