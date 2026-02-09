@@ -18,14 +18,15 @@ resource "proxmox_virtual_environment_vm" "talos-controllers" {
     dedicated = var.controller_memory
   }
 
+  boot_order = ["scsi0", "ide3"]
   disk {
     datastore_id = var.datastore_id
     interface    = "scsi0"
     size         = 20
   }
-
   cdrom {
     file_id   = var.talos_image_location
+    interface = "ide3"
   }
   network_device {
     bridge = "vmbr0"
@@ -66,14 +67,15 @@ resource "proxmox_virtual_environment_vm" "talos-workers"{
     dedicated = var.worker_memory
   }
 
+  boot_order = ["scsi0", "ide3"]
   disk {
     datastore_id = var.datastore_id
     interface    = "scsi0"
     size         = 20
   }
-
   cdrom {
-    file_id   = var.talos_image_location 
+    file_id   = var.talos_image_location
+    interface = "ide3"
   }
   network_device {
     bridge = "vmbr0"
