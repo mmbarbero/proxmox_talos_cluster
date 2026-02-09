@@ -34,3 +34,4 @@ talosconfig
 .DS_Store
 
 talos_configs/
+setup_oidc.sh
