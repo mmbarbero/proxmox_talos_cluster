@@ -36,25 +36,35 @@ data "talos_machine_configuration" "controllers" {
   machine_type = "controlplane"
   machine_secrets = talos_machine_secrets.this.machine_secrets
   config_patches = [
-  yamlencode({
-      machine = {
-        network = {
-          interfaces = [{
-            interface = "ens18"
-            addresses = ["${each.value}/24"]
-            routes = [{
-              network = "0.0.0.0/0"
-              gateway = var.gateway_ip
+    yamlencode({
+        machine = {
+          network = {
+            interfaces = [{
+              interface = "ens18"
+              addresses = ["${each.value}/24"]
+              routes = [{
+                network = "0.0.0.0/0"
+                gateway = var.gateway_ip
+              }]
             }]
-          }]
-          nameservers = var.dns_servers
+            nameservers = var.dns_servers
+          }
+          install = {
+            image = var.talos_install_image_custom
+          }
         }
-        install = {
-          image = var.talos_install_image_custom
+        cluster = {
+            apiServer = {
+                extraArgs = {
+                  "oidc-issuer-url"     = var.oidc_issuer_url
+                  "oidc-client-id"      = var.oidc_client_id
+                  "oidc-username-claim" = "email" 
+                  "oidc-groups-claim"   = "groups"
+                }
+            }
         }
-      }
     })
-]
+  ]
 }
 
 

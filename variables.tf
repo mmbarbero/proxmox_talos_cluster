@@ -83,3 +83,11 @@ variable "create_gitops_repo" {
 variable "github_username" {
   type = string
 }
+
+variable "oidc_issuer_url" {
+  type = string
+}
+
+variable "oidc_client_id" {
+  type = string
+}
